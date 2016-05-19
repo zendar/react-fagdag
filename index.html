@@ -1,0 +1,144 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Tutorial</title>
+    <!-- Not present in the tutorial. Just for basic styling. -->
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>IJBDB</h1>
+    </div>
+
+    <div id="content" class="wrapper"></div>
+
+
+
+
+    <script type="text/babel">
+
+    var something = "test";
+
+    var data = {
+      movies: [
+        {
+          Title:"Dr. No",
+          Year:"1962",
+          Rated:"APPROVED",
+          Released:"08 May 1963",
+          Runtime:"110 min",
+          Genre:"Action, Adventure, Thriller",
+          Director:"Terence Young",
+          Writer:"Richard Maibaum (screenplay), Johanna Harwood (screenplay), Berkely Mather (screenplay), Ian Fleming (novel)",
+          Actors:"Sean Connery, Ursula Andress, Joseph Wiseman, Jack Lord",
+          Plot:"A resourceful British government agent seeks answers in a case involving the disappearance of a colleague and the disruption of the American space program.",
+          Language:"English, French",
+          Country:"UK, USA",
+          Awards:"Won 1 Golden Globe. Another 4 nominations.",
+          Poster:"http://ia.media-imdb.com/images/M/MV5BOTU3NzExMTQ4N15BMl5BanBnXkFtZTcwMjkzNzQzNA@@._V1_SX300.jpg",
+          Metascore:"N/A",imdbRating:"7.3",imdbVotes:"114,326",imdbID:"tt0055928",Type:"movie",Response:"True'"},
+        {
+          Title:"From Russia with Love",Year:"1963",Rated:"APPROVED",Released:"27 May 1964",Runtime:"115 min",Genre:"Action, Adventure, Thriller",Director:"Terence Young",Writer:"Richard Maibaum (screenplay), Johanna Harwood (adaptation)",Actors:"Sean Connery, Daniela Bianchi, Pedro Armendriz, Lotte Lenya",Plot:"James Bond willingly falls into an assassination ploy involving a naive Russian beauty in order to retrieve a Soviet encryption device that was stolen by SPECTRE.",
+          Language:"English, Russian, Turkish, Romany",Country:"UK, USA",Awards:"Nominated for 1 Golden Globe. Another 2 wins & 5 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMTQxNTIzMTExN15BMl5BanBnXkFtZTcwODI4MDgzNA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"7.5",imdbVotes:"87,169",imdbID:"tt0057076",Type:"movie",Response:"True"},
+        {Title:"Goldfinger",Year:"1964",Rated:"APPROVED",Released:"09 Jan 1965",Runtime:"110 min",Genre:"Action, Adventure, Thriller",Director:"Guy Hamilton",Writer:"Richard Maibaum (screenplay), Paul Dehn (screenplay)",Actors:"Sean Connery, Honor Blackman, Gert Frbe, Shirley Eaton",Plot:"Investigating a gold magnates smuggling, James Bond uncovers a plot to contaminate the Fort Knox gold reserve.",Language:"English, Chinese, Spanish",Country:"UK",Awards:"Won 1 Oscar. Another 3 wins & 6 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMTQ2MzE0OTU3NV5BMl5BanBnXkFtZTcwNjQxNTgzNA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"7.8",imdbVotes:"137,585",imdbID:"tt0058150",Type:"movie",Response:"True"},
+        {Title:"Thunderball",Year:"1965",Rated:"APPROVED",Released:"22 Dec 1965",Runtime:"130 min",Genre:"Action, Adventure, Thriller",Director:"Terence Young",Writer:"Richard Maibaum (screenplay), John Hopkins (screenplay), Jack Whittingham (original screenplay), Kevin McClory (original story), Jack Whittingham (original story), Ian Fleming (original story)",Actors:"Sean Connery, Claudine Auger, Adolfo Celi, Luciana Paluzzi",Plot:"James Bond heads to The Bahamas to recover two nuclear warheads stolen by SPECTRE agent Emilio Largo in an international extortion scheme.",Language:"English, French",Country:"UK",Awards:"Won 1 Oscar. Another 3 wins & 5 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMTY1Mjc2MTYxNV5BMl5BanBnXkFtZTcwNzUzMzY3NA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"7.0",imdbVotes:"80,489",imdbID:"tt0059800",Type:"movie",Response:"True"},
+        {Title:"You Only Live Twice",Year:"1967",Rated:"APPROVED",Released:"13 Jun 1967",Runtime:"117 min",Genre:"Action, Adventure, Thriller",Director:"Lewis Gilbert",Writer:"Harold Jack Bloom (additional story material), Roald Dahl (screenplay)",Actors:"Sean Connery, Akiko Wakabayashi, Mie Hama, Tetsur Tanba",Plot:"Agent 007 and the Japanese secret service ninja force must find and stop the true culprit of a series of spacejackings before nuclear war is provoked.",Language:"English, Japanese, Russian",Country:"UK",Awards:"Nominated for 1 BAFTA Film Award. Another 1 win & 2 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMTk4NTU2Mzk1OV5BMl5BanBnXkFtZTcwMzY5MDg0NA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"6.9",imdbVotes:"73,624",imdbID:"tt0062512",Type:"movie",Response:"True"},
+        {Title:"On Her Majestys Secret Service",Year:"1969",Rated:"M",Released:"18 Dec 1969",Runtime:"142 min",Genre:"Action, Adventure, Thriller",Director:"Peter R. Hunt",Writer:"Simon Raven (additional dialogue), Richard Maibaum (screenplay)",Actors:"George Lazenby, Diana Rigg, Telly Savalas, Gabriele Ferzetti",Plot:"James Bond woos a mob bosss daughter and goes undercover to uncover the true reason for Blofelds allergy research in the Swiss Alps that involves beautiful women from around the world.",Language:"English, German, French",Country:"UK, USA",Awards:"Nominated for 1 Golden Globe. Another 3 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMTc0NDYzMjgyNV5BMl5BanBnXkFtZTcwMjgyMzY0NA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"6.8",imdbVotes:"58,568",imdbID:"tt0064757",Type:"movie",Response:"True"},
+        {Title:"Diamonds Are Forever",Year:"1971",Rated:"GP",Released:"17 Dec 1971",Runtime:"120 min",Genre:"Action, Adventure, Thriller",Director:"Guy Hamilton",Writer:"Richard Maibaum (screenplay), Tom Mankiewicz (screenplay)",Actors:"Sean Connery, Jill St. John, Charles Gray, Lana Wood",Plot:"A diamond smuggling investigation leads James Bond to Las Vegas, where he uncovers an evil plot involving a rich business tycoon.",Language:"English, German",Country:"UK, USA",Awards:"Nominated for 1 Oscar. Another 1 win & 3 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMTM0MDI2MzYzOF5BMl5BanBnXkFtZTcwNDY4NTMzNA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"6.7",imdbVotes:"72,562",imdbID:"tt0066995",Type:"movie",Response:"True"},
+        {Title:"Live and Let Die",Year:"1973",Rated:"PG",Released:"27 Jun 1973",Runtime:"121 min",Genre:"Action, Adventure, Thriller",Director:"Guy Hamilton",Writer:"Tom Mankiewicz (screenplay)",Actors:"Roger Moore, Yaphet Kotto, Jane Seymour, Clifton James",Plot:"007 is sent to stop a diabolically brilliant heroin magnate armed with a complex organization and a reliable psychic tarot card reader.",Language:"English, Hungarian",Country:"UK",Awards:"Nominated for 1 Oscar. Another 2 wins & 2 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMjI2NTY5MTYzMl5BMl5BanBnXkFtZTcwNzY5MDg0NA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"6.8",imdbVotes:"73,205",imdbID:"tt0070328",Type:"movie",Response:"True"},
+        {Title:"The Man with the Golden Gun",Year:"1974",Rated:"PG",Released:"20 Dec 1974",Runtime:"125 min",Genre:"Action, Adventure, Thriller",Director:"Guy Hamilton",Writer:"Richard Maibaum (screenplay), Tom Mankiewicz (screenplay)",Actors:"Roger Moore, Christopher Lee, Britt Ekland, Maud Adams",Plot:"James Bond is led to believe that he is targeted by the worlds most expensive assassin while he attempts to recover sensitive solar cell technology that is being sold to the highest bidder.",Language:"English, Thai, Cantonese",Country:"UK, USA",Awards:"1 win & 1 nomination.",Poster:"http://ia.media-imdb.com/images/M/MV5BODg3NjQ0MjMwN15BMl5BanBnXkFtZTcwNTY5MDg0NA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"6.8",imdbVotes:"72,337",imdbID:"tt0071807",Type:"movie",Response:"True"},
+        {Title:"The Spy Who Loved Me",Year:"1977",Rated:"PG",Released:"03 Aug 1977",Runtime:"125 min",Genre:"Action, Adventure, Sci-Fi",Director:"Lewis Gilbert",Writer:"Christopher Wood (screenplay), Richard Maibaum (screenplay)",Actors:"Roger Moore, Barbara Bach, Curd JÃ¼rgens, Richard Kiel",Plot:"James Bond investigates the hijacking of British and Russian submarines carrying nuclear warheads with the help of a KGB agent whose lover he killed.",Language:"English, Italian, Arabic",Country:"UK",Awards:"Nominated for 3 Oscars. Another 2 wins & 8 nominations.",Poster:"http://ia.media-imdb.com/images/M/MV5BMjI1MTA5NDE1NF5BMl5BanBnXkFtZTcwMDIzMzY0NA@@._V1_SX300.jpg",Metascore:"N/A",imdbRating:"7.1",imdbVotes:"74,808",imdbID:"tt0076752",Type:"movie",Response:"True"}
+      ]
+
+    };
+
+
+    var MovieRow = React.createClass({
+      render: function(){
+        var link = "http://www.imdb.com/title/" + this.props.imdbId;
+        return (
+          <div className="movieRow">
+            <div className="coverImg"><img src={this.props.poster} alt="" /></div>
+            <h2>{this.props.title} <span className="year">({this.props.year})</span></h2>
+            <div className="plot">{this.props.plot}</div>
+            <div className="actors">
+              <span>Actors: </span>
+              <span>{this.props.actors}</span>
+              <span> <a href={link}>More</a></span>
+            </div>
+
+
+          </div>
+        )
+      }
+    });
+
+    var MovieTable = React.createClass({
+
+      render: function(){
+        var rows = [];
+        var filterText = this.props.filterText;
+        this.props.movies.forEach(function(movie) {
+          if (movie.Title.toLowerCase().indexOf(filterText.toLowerCase()) === -1){
+            return;
+          }
+          rows.push(<MovieRow title={movie.Title} year={movie.Year} actors={movie.Actors} poster={movie.Poster} imdbId={movie.imdbID} key={movie.imdbID} plot={movie.Plot} />);
+        });
+
+        return (
+          <div>
+            {rows}
+          </div>
+        )
+      }
+    });
+
+    var SearchBar = React.createClass({
+      handleChange: function(){
+        this.props.onUserInput(this.refs.filterTextInp.value);
+      },
+      render: function(){
+        return(
+          <input ref="filterTextInp" type="text" className="searchField" value={this.props.filterText} placeholder="Search..." onChange={this.handleChange} />
+        )
+      }
+    });
+
+    var SearchableMovieList = React.createClass({
+      getInitialState: function(){
+        return {filterText: ''}
+      },
+      handleFilterTextChange: function(newFilterText) {
+        this.setState({
+          filterText: newFilterText
+        });
+      },
+      render: function(){
+        return(
+          <div>
+            <div><SearchBar filterText={this.state.filterText} onUserInput={this.handleFilterTextChange} /></div>
+            <div><MovieTable movies={this.props.movies} filterText={this.state.filterText} /></div>
+          </div>
+        )
+      }
+    });
+
+    ReactDOM.render(
+      <SearchableMovieList movies={data.movies} />,
+      document.getElementById("content")
+    );
+
+    </script>
+  </body>
+</html>

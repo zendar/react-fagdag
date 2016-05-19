@@ -1,0 +1,56 @@
+body{
+  font-family: arial, sans-serif;
+}
+
+h1{
+  font-weight: 100;
+  text-align: center;
+}
+
+h2{
+  margin:0;
+}
+
+.wrapper {
+  width:1000px;
+  font-size: 15pt;
+}
+
+.searchField{
+  width:300px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: block;
+  font-size: 16pt;
+}
+
+.year{
+  font-size: 14pt;
+}
+
+.coverImg{
+  height: 110px;
+  float:left;
+  width: 110px;
+}
+.coverImg img{
+  height: auto;
+  width: auto;
+  max-width: 110px;
+  max-height: 110px;
+}
+
+.plot{
+  font-size: 12pt;
+}
+
+.actors{
+  font-style: italic;
+  font-size: 12pt;
+  font-weight: 600;
+}
+
+.movieRow{
+  margin-bottom: 10px;
+  height: 110px;
+}
