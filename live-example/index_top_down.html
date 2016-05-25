@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Tutorial</title>
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.js"></script>
+    <script src="data/data.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>IJBDB</h1>
+    </div>
+
+    <div id="content" class="wrapper"></div>
+
+    <script type="text/babel">
+
+      var SearchableMovieList = React.createClass({
+        getInitialState: function(){
+          return {filterText:''};
+        },
+        handleFilterTextChange: function(newFilterText) {
+          this.setState({filterText:newFilterText});
+        },
+        render: function(){
+          return (
+            <div>
+              <div><SearchBar filterText={this.state.filterText} onUserInput={this.handleFilterTextChange} /></div>
+              <div><MovieList movies={this.props.data} filterText={this.state.filterText} /></div>
+            </div>
+          );
+        }
+      });
+
+      var SearchBar = React.createClass({
+        handleChange: function(){
+          this.props.onUserInput(this.refs.filterTextInp.value);
+        },
+        render: function(){
+          return (
+            <input ref="filterTextInp" type="text" value={this.props.filterText} onChange={this.handleChange} className="searchField" placeholder="Search..." />
+          )
+        }
+      });
+
+      var MovieList = React.createClass({
+        render: function(){
+          var rows = [];
+          var filterText = this.props.filterText;
+          this.props.movies.forEach(function(movie){
+            if (movie.Title.toLowerCase().indexOf(filterText.toLowerCase()) === -1){
+              return;
+            }
+            rows.push( <MovieRow title={movie.Title} poster={movie.Poster} year={movie.Year} plot={movie.Plot} actor={movie.Actors} imdbID={movie.imdbID} key={movie.imdbID} /> );
+          });
+          return (
+            <div>
+              { rows }
+            </div>
+          )
+        }
+      });
+
+      var MovieRow = React.createClass({
+        render: function() {
+          var link = "http://www.imdb.com/title/" + this.props.imdbID;
+          return (
+            <div className="movieRow">
+              <div className="coverImg"><img src={this.props.poster} alt="" /></div>
+              <h2>{this.props.title} <span className="year">({this.props.year})</span></h2>
+              <div className="plot">{this.props.plot}</div>
+              <div className="actors">
+                <span>Actors: </span>
+                <span>{this.props.actors}</span>
+                <span> <a href={link}>More</a></span>
+              </div>
+            </div>
+          )
+
+        }
+      });
+
+      ReactDOM.render(<SearchableMovieList data={data.movies} />, document.getElementById('content'));
+
+    </script>
+
+  </body>
+</html>
