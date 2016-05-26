@@ -18,7 +18,7 @@
 
 ```
 var link = "http://www.imdb.com/title/" + this.props.imdbId;
-``
+```
 
 # MovieTable
 
