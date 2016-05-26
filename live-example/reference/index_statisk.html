@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>React Tutorial</title>
     <link rel="stylesheet" href="css/base.css" />
-    <script src="js/react.js"></script>
-    <script src="js/react-dom.js"></script>
-    <script src="js/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script src="data/data.js"></script>
   </head>
   <body>
@@ -19,30 +19,19 @@
     <script type="text/babel">
 
       var SearchableMovieList = React.createClass({
-        getInitialState: function(){
-          return {filterText:''};
-        },
-        handleFilterTextChange: function(newFilterText) {
-          this.setState({filterText:newFilterText});
-        },
         render: function(){
           return (
             <div>
-              <div><SearchBar filterText={this.state.filterText} onUserInput={this.handleFilterTextChange} /></div>
-              <div><MovieList movies={this.props.data} filterText={this.state.filterText} /></div>
+              <div><SearchBar /></div>
+              <div><MovieList movies={data.movies} /></div>
             </div>
-          );
+          )
         }
       });
 
       var SearchBar = React.createClass({
-        handleChange: function(){
-          this.props.onUserInput(this.refs.filterTextInp.value);
-        },
         render: function(){
-          return (
-            <input ref="filterTextInp" type="text" value={this.props.filterText} onChange={this.handleChange} className="searchField" placeholder="Search..." />
-          )
+          return <input ref="filterTextInp" type="text" className="searchField" value={this.props.filterText} placeholder="Search..." />
         }
       });
 
@@ -51,21 +40,24 @@
           var rows = [];
           var filterText = this.props.filterText;
           this.props.movies.forEach(function(movie){
-            if (movie.Title.toLowerCase().indexOf(filterText.toLowerCase()) === -1){
-              return;
-            }
-            rows.push( <MovieRow title={movie.Title} poster={movie.Poster} year={movie.Year} plot={movie.Plot} actor={movie.Actors} imdbID={movie.imdbID} key={movie.imdbID} /> );
+            rows.push(
+              <MovieRow
+                title={movie.Title}
+                poster={movie.Poster}
+                year={movie.Year}
+                plot={movie.Plot}
+                actor={movie.Actors}
+                imdbID={movie.imdbID}
+              />
+            );
           });
-          return (
-            <div>
-              { rows }
-            </div>
-          )
+
+          return <div>{rows}</div>
         }
       });
 
       var MovieRow = React.createClass({
-        render: function() {
+        render: function(){
           var link = "http://www.imdb.com/title/" + this.props.imdbID;
           return (
             <div className="movieRow">
@@ -79,11 +71,13 @@
               </div>
             </div>
           )
-
         }
       });
 
-      ReactDOM.render(<SearchableMovieList data={data.movies} />, document.getElementById('content'));
+      ReactDOM.render(
+        <SearchableMovieList data={data} />,
+        document.getElementById('content')
+      );
 
     </script>
 

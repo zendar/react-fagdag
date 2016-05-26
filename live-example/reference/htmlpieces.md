@@ -17,7 +17,7 @@
 ## link
 
 ```
-var link = "http://www.imdb.com/title/" + this.props.imdbId;
+var link = "http://www.imdb.com/title/" + this.props.imdbID;
 ```
 
 # MovieTable
@@ -38,7 +38,16 @@ this.props.movies.forEach(function(movie) {
   if (movie.Title.toLowerCase().indexOf(filterText.toLowerCase()) === -1){
     return;
   }
-  rows.push(<MovieRow title={movie.Title} year={movie.Year} actors={movie.Actors} poster={movie.Poster} imdbId={movie.imdbID} key={movie.imdbID} plot={movie.Plot} />);
+  rows.push(
+    <MovieRow
+      title={movie.Title}
+      poster={movie.Poster}
+      year={movie.Year}
+      plot={movie.Plot}
+      actor={movie.Actors}
+      imdbID={movie.imdbID}
+    /> );
+  );
 });
 ```
 
