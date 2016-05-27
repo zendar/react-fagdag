@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>React Tutorial</title>
     <link rel="stylesheet" href="css/base.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script src="data/data.js"></script>
@@ -23,7 +23,7 @@ var SearchableAirportsList = React.createClass({
     return (
       <div>
         <div><SearchBar /></div>
-        <div><AirportList airports={this.props.data} /></div>
+        <div><AirportList airports={this.props.airports} /></div>
       </div>
     );
   }
@@ -39,10 +39,12 @@ var SearchBar = React.createClass({
 
 var AirportList = React.createClass({
   render: function(){
-    var row = [];
+    var rows = [];
+    var i = 0;
     this.props.airports.forEach(function(airport){
       rows.push(
         <AirportRow
+          key={airport.fs}
           fs= {airport.fs}
           iata= {airport.iata}
           icao= {airport.icao}
@@ -65,6 +67,8 @@ var AirportList = React.createClass({
         />);
 
       });
+
+      return <div>{rows}</div>
   }
 });
 
