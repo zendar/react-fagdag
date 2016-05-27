@@ -70,7 +70,6 @@ var AirportList = React.createClass({
 
 var AirportRow = React.createClass({
   render: function(){
-    var link = "http://www.imdb.com/title/" + this.props.imdbID;
     return (
       <div className="movieRow">
         <h2>{this.props.name} <span className="year">({this.props.countryName})</span></h2>
