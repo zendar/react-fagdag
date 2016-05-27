@@ -19,6 +19,50 @@
 
 <script src="data.js"></script>
 <script type="text/babel">
+var SearchableAirportsList = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <div><SearchBar /></div>
+        <div><AirportList airports={this.props.data} /></div>
+      </div>
+    );
+  }
+});
+
+var AirportList = React.createClass({
+  render: function(){
+    var row = [];
+    this.props.airports.forEach(function(airport){
+      "fs": airport.fs,
+      "iata": airport.iata,
+      "icao": airport.icao,
+      "name": airport.name,
+      "city": airport.city,
+      "cityCode": airport.cityCode,
+      "countryCode": airport.countryCode,
+      "countryName": airport.countryName,
+      "regionName": airport.regionName,
+      "timeZoneRegionName": airport.timeZoneRegionName,
+      "localTime": airport.localTime,
+      "utcOffsetHours": airport.utcOffsetHours,
+      "latitude": airport.latitude,
+      "longitude": airport.longitude,
+      "elevationFeet": airport.elevationFeet,
+      "classification": airport.classification,
+      "active": airport.active,
+      "weatherUrl": airport.weatherUrl,
+      "delayIndexUrl": airport.delayIndexUrl
+      });
+  }
+});
+
+var AirportRow = React.createClass({
+  render: function(){
+    
+  }
+});
+
 ReactDOM.render(
   <SearchableAirportsList airports={data.airports} />,
   document.getElementById("content")
