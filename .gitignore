@@ -4,3 +4,4 @@
 
 /webpack-project/_steps
 /webpack-project/node_modules
+.DS_Store
