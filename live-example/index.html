@@ -19,17 +19,26 @@
 
 <script type="text/babel">
 var SearchableAirportsList = React.createClass({
+        getInitialState: function(){
+          return {filterText:''};
+        },
+        handleFilterTextChange: function(newFilterText) {
+          this.setState({filterText:newFilterText});
+        },
   render: function(){
     return (
       <div>
-        <div><SearchBar /></div>
-        <div><AirportList airports={this.props.airports} /></div>
+        <div><SearchBar filterText={this.state.filterText} onUserInput={this.handleFilterTextChange}/></div>
+        <div><AirportList airports={this.props.airports} filterText={this.state.filterText}/></div>
       </div>
     );
   }
 });
 
 var SearchBar = React.createClass({
+        handleChange: function(){
+          this.props.onUserInput(this.refs.filterTextInp.value);
+        },
   render: function(){
     return (
       <input ref="filterTextInp" type="text" value={this.props.filterText} onChange={this.handleChange} className="searchField" placeholder="Search..." />
@@ -40,8 +49,13 @@ var SearchBar = React.createClass({
 var AirportList = React.createClass({
   render: function(){
     var rows = [];
-    var i = 0;
+    var filterText = this.props.filterText;
+
     this.props.airports.forEach(function(airport){
+      if (airport.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1){
+        return;
+      }
+
       rows.push(
         <AirportRow
           key={airport.fs}
